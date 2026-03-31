@@ -68,16 +68,3 @@ Le script affichera ensuite un resume :
 - `ask_txt_path()` : lecture et validation du chemin utilisateur
 - `main()` : orchestration du flux complet
 
-## Publication sur GitHub
-
-Etapes conseillees :
-1. Ajouter ce README.
-2. Verifier que le script fonctionne avec un exemple local.
-3. Ajouter un `.gitignore` (par exemple pour ignorer `.venv/` et les fichiers volumineux non necessaires).
-4. Commit et push sur GitHub.
-
-## Limites actuelles
-
-- Le script suppose un graphe non oriente dans le fichier GEXF.
-- Les lignes qui ne contiennent pas exactement 2 colonnes sont ignorees.
-- Les identifiants de noeuds sont traites comme du texte (tri numerique si possible, sinon lexicographique).
