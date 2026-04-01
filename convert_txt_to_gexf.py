@@ -12,13 +12,14 @@ def txt_to_gexf(txt_file: Path, gexf_file: Path) -> tuple[int, int]:
 				continue
 
 			parts = line.split()
-			if len(parts) != 2:
+			if len(parts) < 2:
 				continue
 
-			src, tgt = parts
+			src = parts[0]
 			nodes.add(src)
-			nodes.add(tgt)
-			edges.append((src, tgt))
+			for tgt in parts[1:]:
+				nodes.add(tgt)
+				edges.append((src, tgt))
 
 	with gexf_file.open("w", encoding="utf-8") as fout:
 		fout.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")

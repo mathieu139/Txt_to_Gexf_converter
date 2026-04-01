@@ -20,21 +20,23 @@ Le programme fait les actions suivantes :
 
 ## Format attendu du fichier TXT
 
-Chaque ligne valide doit contenir 2 valeurs separees par des espaces :
+Chaque ligne valide doit contenir au moins 2 valeurs séparées par des espaces. Le premier element est le noeud source, les suivants sont les noeuds cibles :
 
 ```txt
-source cible
+source cible1 cible2 ...
 ```
 
 Exemple :
 
 ```txt
-0 1
-1 2
-2 3
+A B C
+B C A
+C B A
 # commentaire
-3 4
+0 1 2 3
 ```
+
+Dans cet exemple, la ligne `A B C` crée les arêtes A→B et A→C.
 
 ## Prerequis
 
