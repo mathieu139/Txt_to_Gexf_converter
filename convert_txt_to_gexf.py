@@ -54,7 +54,16 @@ def ask_txt_path() -> Path:
 
 	txt_path = Path(raw_path).expanduser()
 	if not txt_path.is_absolute():
-		txt_path = (Path.cwd() / txt_path).resolve()
+		# On accepte un nom de fichier simple place a cote du script.
+		script_dir = Path(__file__).resolve().parent
+		candidates = [script_dir / txt_path, Path.cwd() / txt_path]
+		for candidate in candidates:
+			if candidate.exists():
+				txt_path = candidate.resolve()
+				break
+		else:
+			# Conserve un chemin coherent pour le message d'erreur.
+			txt_path = (script_dir / txt_path).resolve()
 
 	if not txt_path.exists():
 		raise FileNotFoundError(f"Fichier introuvable: {txt_path}")
